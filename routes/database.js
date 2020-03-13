@@ -1,7 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-
+//DBからデータを取得するだけ
 router.get('/', function (req, res, next) {
     var pool = pg.Pool({
         database: 'schedule',
@@ -15,8 +15,8 @@ router.get('/', function (req, res, next) {
             console.log(err);
         } else {
             client.query('SELECT content FROM schedule', function (err, result) {
-                res.render('index', {
-                    title: 'Express',
+                res.render('database', {
+                    title: 'GETメソッド',
                     datas: result.rows[0].content,
                 });
                 console.log(result); //コンソール上での確認用なため、この1文は必須ではない。
