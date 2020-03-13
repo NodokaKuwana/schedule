@@ -3,7 +3,7 @@ var router = express.Router();
 var pg = require('pg');
 url = require('url');
 
-//DBからデータを取得するだけ
+//GETメソッドで予定取得
 router.get('/', function (req, res, next) {
     var pool = pg.Pool({
         database: 'schedule',
