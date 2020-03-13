@@ -1,6 +1,8 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
+url = require('url');
+
 //DBからデータを取得するだけ
 router.get('/', function (req, res, next) {
     var pool = pg.Pool({
@@ -10,17 +12,23 @@ router.get('/', function (req, res, next) {
         host: 'localhost',
         port: 5432,
     });
+
     pool.connect(function (err, client) {
-        if (err) {
-            console.log(err);
-        } else {
-            client.query('SELECT content FROM schedule', function (err, result) {
+        try {
+            client.query(`SELECT content FROM schedule where id='${req.query.id}'`, function (err, result) {
+                console.log(result.rows.length)
+                if (result.rows.length !== 0) {
+                    data = result.rows[0].content
+                } else {
+                    data = '予定がありません'
+                }
                 res.render('database', {
                     title: 'GETメソッド',
-                    datas: result.rows[0].content,
+                    datas: data,
                 });
-                console.log(result); //コンソール上での確認用なため、この1文は必須ではない。
             });
+        } catch (err) {
+            console.log(err);
         }
     });
 });
