@@ -1,7 +1,6 @@
 var express = require('express');
 var router = express.Router();
 var pg = require('pg');
-url = require('url');
 
 //GETメソッドで予定取得
 router.get('/', function (req, res, next) {
