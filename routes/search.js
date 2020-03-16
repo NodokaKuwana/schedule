@@ -14,22 +14,29 @@ router.get('/', function (req, res, next) {
 
     pool.connect(function (err, client) {
         try {
-            client.query(`SELECT content FROM schedule where id='${req.query.id}'`, function (err, result) {
-                console.log(result.rows.length)
-                if (result.rows.length !== 0) {
-                    data = result.rows[0].content
-                } else {
-                    data = '予定がありません'
-                }
-                res.render('database', {
-                    title: 'GETメソッド',
-                    datas: data,
+            if (req.query.id != null) {
+                client.query(`SELECT content FROM schedule where id='${req.query.id}'`, function (err, result) {
+                    console.log(result.rows.length)
+                    if (result.rows.length !== 0) {
+                        data = result.rows[0].content
+                    } else {
+                        data = '予定がありません'
+                    }
+                    res.render('database', {
+                        title: 'GETメソッド',
+                        datas: data,
+                    });
                 });
-            });
+            } else {
+                client.query(`SELECT date,time,content FROM schedule`, function (err, result) {
+                    res.send(result.rows);
+                });
+            }
         } catch (err) {
             console.log(err);
         }
     });
+    pool.end();
 });
 
 module.exports = router;

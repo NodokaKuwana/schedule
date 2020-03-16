@@ -22,9 +22,11 @@ app.use(express.static(path.join(__dirname, 'public')));
 var indexRouter = require('./routes/index');
 var searchRouter = require('./routes/search');
 var registarRouter = require('./routes/register');
+var deleteRouter = require('./routes/delete');
 app.use('/', indexRouter);
 app.use('/search', searchRouter);
 app.use('/register', registarRouter);
+app.use('/delete', deleteRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

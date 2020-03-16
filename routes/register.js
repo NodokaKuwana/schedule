@@ -21,25 +21,15 @@ router.post('/', function (req, res) {
   });
 
   //DBに登録
-  pool.connect(function (err, client) {
+  let regist = pool.connect(function (err, client) {
     try {
       console.log(id)
-      client.query(`INSERT INTO schedule values ('${id}','${date}','${time}','${content}')`)
-      // , function (err, result) {
-      //     if (result.rows.length !== 0) {
-      //         data = result.rows[0].content
-      //     } else {
-      //         data = '予定がありません'
-      //     }
-      //     res.render('database', {
-      //         title: 'GETメソッド',
-      //         datas: data,
-      //     });
-      // });
+      client.query(`INSERT INTO schedule values (gen_random_uuid(),'${id}','${date}','${time}','${content}')`)
     } catch (err) {
       console.log(err);
     }
   });
+  pool.end();
   res.send('Request is sended.');
 })
 
