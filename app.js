@@ -23,10 +23,12 @@ var indexRouter = require('./routes/index');
 var searchRouter = require('./routes/search');
 var registarRouter = require('./routes/register');
 var deleteRouter = require('./routes/delete');
+var updateRouter = require('./routes/update');
 app.use('/', indexRouter);
 app.use('/search', searchRouter);
 app.use('/register', registarRouter);
 app.use('/delete', deleteRouter);
+app.use('/update', updateRouter);
 
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {

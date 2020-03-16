@@ -24,7 +24,6 @@ router.delete('/', function (req, res, next) {
       console.log(err);
     }
   });
-  pool.end();
 });
 
 module.exports = router;
