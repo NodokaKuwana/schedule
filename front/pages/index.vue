@@ -21,6 +21,9 @@
           <v-btn color="primary" nuxt to="/test">
             使ってみる
           </v-btn>
+          <v-btn color="primary" nuxt to="/test2">
+            使ってみる2
+          </v-btn>
         </v-card-actions>
       </v-card>
     </v-flex>

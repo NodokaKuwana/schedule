@@ -20,7 +20,7 @@
     </v-flex>
     <v-card-actions>
       <v-spacer />
-      <v-btn color="primary" nuxt to="/inspire">
+      <v-btn color="primary" nuxt to="/test">
         使ってみる
       </v-btn>
     </v-card-actions>
