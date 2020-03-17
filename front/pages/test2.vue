@@ -17,6 +17,7 @@
             </v-sheet>
           </v-row>
         </v-app>
+        <Button buttonName="サインアップ" />
       </blockquote>
     </v-flex>
   </v-layout>
