@@ -17,17 +17,14 @@
             </v-sheet>
           </v-row>
         </v-app>
-        <Button buttonName="サインアップ" />
       </blockquote>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
-import Vuetify from 'vuetify'
 export default {
   el: '#inspire',
-  vuetify: new Vuetify(),
   data() {
     return {
       picker: new Date().toISOString().substr(0, 10)
