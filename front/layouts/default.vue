@@ -74,13 +74,18 @@ export default {
       items: [
         {
           icon: 'mdi-apps',
-          title: 'Welcome',
+          title: 'Top',
           to: '/'
         },
         {
           icon: 'mdi-chart-bubble',
-          title: 'Inspire',
-          to: '/inspire'
+          title: 'Register event',
+          to: '/test2'
+        },
+        {
+          icon: 'mdi-calendar-multiple-check',
+          title: 'calender',
+          to: '/test3'
         }
       ],
       miniVariant: false,
