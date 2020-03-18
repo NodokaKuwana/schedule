@@ -13,9 +13,11 @@
 <script>
 export default {
   async asyncData({ app }) {
-    const baseUrl = 'https://zip-cloud.appspot.com/api/search?zipcode=7830060'
+    const baseUrl = 'http://localhost:8000/search'
     const response = await app.$axios.$get(baseUrl)
-    return { message: response.results[0].address1 }
+    console.log(response[0].content)
+    const content = response[0].content
+    return { message: content }
   }
 }
 </script>
