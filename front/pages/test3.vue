@@ -2,9 +2,7 @@
   <section class="container">
     <div>
       <v-app id="inspire">
-        <div id="app">
-          <h1>{{ message }}</h1>
-        </div>
+        <h1>{{ message }}</h1>
       </v-app>
     </div>
   </section>
@@ -13,10 +11,9 @@
 <script>
 export default {
   async asyncData({ app }) {
-    const baseUrl = 'http://localhost:8000/search'
+    const baseUrl = 'https://zip-cloud.appspot.com/api/search?zipcode=7830060'
     const response = await app.$axios.$get(baseUrl)
-    console.log(response[0].content)
-    const content = response[0].content
+    const content = response.results[0].address1
     return { message: content }
   }
 }

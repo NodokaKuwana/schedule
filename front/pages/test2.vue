@@ -4,7 +4,7 @@
       <blockquote class="blockquote">
         予定を登録する
         <v-app id="inspire">
-          <v-row justify="right">
+          <v-row justify="start">
             <v-sheet height="600">
               <v-date-picker
                 v-model="picker"
@@ -23,7 +23,6 @@
 
 <script>
 export default {
-  el: '#inspire',
   data() {
     return {
       picker: new Date().toISOString().substr(0, 10)
