@@ -1,6 +1,9 @@
 const colors = require('vuetify/es5/util/colors').default
 
 module.exports = {
+  serverMiddleware: [
+    { path: '/middleware-api', handler: '~/Middleware/api' }
+  ],
   mode: 'universal',
   /*
    ** Headers of the page

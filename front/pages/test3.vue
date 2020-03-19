@@ -9,12 +9,14 @@
 </template>
 
 <script>
+import index from '../store/index'
+console.log(index)
+
 export default {
-  async asyncData({ app }) {
-    const baseUrl = 'https://zip-cloud.appspot.com/api/search?zipcode=7830060'
-    const response = await app.$axios.$get(baseUrl)
-    const content = response.results[0].address1
-    return { message: content }
+  data() {
+    return {
+      message: index
+    }
   }
 }
 </script>

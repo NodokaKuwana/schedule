@@ -11,8 +11,7 @@
                 color="#81D4FA"
                 header-color="#F8BBD0"
                 width="600"
-              >
-              </v-date-picker>
+              />
             </v-sheet>
           </v-row>
         </v-app>
