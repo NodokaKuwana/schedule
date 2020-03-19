@@ -9,14 +9,17 @@
 </template>
 
 <script>
-import axios from 'axios'
+import { mapGetters, mapActions } from 'vuex'
+
 export default {
-  asyncData() {
-    return axios
-      .get(`https://zip-cloud.appspot.com/api/search?zipcode=7830060`)
-      .then((response) => {
-        return { message: response.data.results[0].address1 }
-      })
+  name: 'test3',
+  computed: mapGetters('sumple', {
+    todos: 'getTodos'
+  }),
+  methods: {
+    ...mapActions({
+      toggleTodo: 'getTodos'
+    })
   }
 }
 </script>
