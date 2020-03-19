@@ -1,22 +1,25 @@
 <template>
   <section class="container">
     <div>
-      <v-app id="inspire">
+      <!-- <v-app id="inspire">
         <h1>{{ message }}</h1>
-      </v-app>
+      </v-app> -->
     </div>
   </section>
 </template>
 
 <script>
-import index from '../store/index'
-console.log(index)
+import { mapGetters, mapActions } from 'vuex'
 
 export default {
-  data() {
-    return {
-      message: index
-    }
+  name: 'test3',
+  computed: mapGetters('sumple', {
+    todos: 'getTodos'
+  }),
+  methods: {
+    ...mapActions({
+      toggleTodo: 'getTodos'
+    })
   }
 }
 </script>
