@@ -30,10 +30,7 @@ module.exports = {
    ** Global CSS
    */
   css: [],
-  /*
-   ** Plugins to load before mounting the App
-   */
-  plugins: [],
+
   /*
    ** Nuxt.js dev-modules
    */
@@ -46,7 +43,25 @@ module.exports = {
   /*
    ** Nuxt.js modules
    */
-  modules: ['@nuxtjs/axios'],
+  modules: [
+    '@nuxtjs/axios',
+    '@nuxtjs/proxy'
+  ],
+  axios: {
+    proxy: true,
+    prefix: '/search'
+  },
+  proxy: {
+    '/api/': {
+      target: 'http://localhost:8000',
+      pathRewrite: {
+        '^/search/': '/'
+      }
+    }
+  },
+  // plugins: [
+  //   { src: 'plugins/axios.js', ssr: false }
+  // ],
   /*
    ** vuetify module configuration
    ** https://github.com/nuxt-community/vuetify-module
