@@ -1,9 +1,6 @@
 const colors = require('vuetify/es5/util/colors').default
 
 module.exports = {
-  serverMiddleware: [
-    { path: '/server-middleware-api', handler: '~/Middleware/api' }
-  ],
   mode: 'universal',
   /*
    ** Headers of the page
@@ -44,18 +41,17 @@ module.exports = {
    ** Nuxt.js modules
    */
   modules: [
-    '@nuxtjs/axios',
-    '@nuxtjs/proxy'
+    '@nuxtjs/proxy',
+    '@nuxtjs/axios'
   ],
   axios: {
-    proxy: true,
-    prefix: '/search'
+    prefix: '/search',
   },
   proxy: {
-    '/api/': {
-      target: 'http://localhost:8000',
+    '/search': {
+      target: 'http://localhost:3030/',
       pathRewrite: {
-        '^/search/': '/'
+        '^/search': '/'
       }
     }
   },

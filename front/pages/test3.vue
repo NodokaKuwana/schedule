@@ -1,21 +1,41 @@
 <template>
   <section class="container">
     <div>
-      <v-app id="inspire">
-        <h1>{{ message }}</h1>
-      </v-app>
+      <v-data-table :headers="headers" :items="lists" :items-per-page="10" />
     </div>
   </section>
 </template>
 
 <script>
-import axios from 'axios'
 export default {
-  asyncData() {
-    return axios.get(`/search`).then((response) => {
-      console.log(response)
-      return { message: 'response.data.results[0].address1' }
-    })
+  data() {
+    return {
+      headers: [
+        {
+          text: '日にち',
+          align: 'left',
+          sortable: true,
+          value: 'date'
+        },
+        {
+          text: '時間',
+          searchable: true,
+          sortable: true,
+          value: 'time'
+        },
+        {
+          text: 'やること',
+          value: 'content'
+        }
+      ]
+    }
+  },
+  async asyncData({ app }) {
+    // エンドポイントを設定
+    const baseUrl = '/search'
+    const response = await app.$axios.$get(baseUrl)
+    console.log(response[2].date)
+    return { lists: response }
   }
 }
 </script>
