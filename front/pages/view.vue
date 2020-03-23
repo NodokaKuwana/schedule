@@ -19,13 +19,19 @@ export default {
         },
         {
           text: '時間',
-          searchable: true,
+          align: 'left',
           sortable: true,
           value: 'time'
         },
         {
           text: 'やること',
+          align: 'left',
           value: 'content'
+        },
+        {
+          text: 'Actions',
+          value: 'actions',
+          sortable: false
         }
       ]
     }
