@@ -28,7 +28,7 @@ router.get('/', function (req, res, next) {
                     });
                 });
             } else {
-                client.query(`SELECT date,time,content FROM schedule`, function (err, result) {
+                client.query(`SELECT to_char(date, 'yyyy-mm-dd') as date,to_char(time, 'hh:mm') as time,content FROM schedule`, function (err, result) {
                     res.send(result.rows);
                 });
             }

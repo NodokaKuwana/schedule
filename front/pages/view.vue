@@ -34,7 +34,7 @@ export default {
     // エンドポイントを設定
     const baseUrl = '/search'
     const response = await app.$axios.$get(baseUrl)
-    console.log(response[2].date)
+    console.log(response)
     return { lists: response }
   }
 }
