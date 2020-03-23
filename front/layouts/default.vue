@@ -80,12 +80,12 @@ export default {
         {
           icon: 'mdi-chart-bubble',
           title: 'Register event',
-          to: '/test2'
+          to: '/regist'
         },
         {
           icon: 'mdi-calendar-multiple-check',
-          title: 'calender',
-          to: '/test3'
+          title: 'view',
+          to: '/view'
         }
       ],
       miniVariant: false,
