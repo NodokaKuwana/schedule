@@ -1,30 +1,43 @@
 <template>
   <v-layout>
     <v-flex class="text-center">
-      <blockquote class="blockquote">
-        予定を登録する
-        <v-app id="inspire">
-          <v-row justify="start">
-            <v-sheet height="600">
-              <v-date-picker
-                v-model="picker"
-                color="#81D4FA"
-                header-color="#F8BBD0"
-                width="600"
-              />
-            </v-sheet>
-          </v-row>
-        </v-app>
-      </blockquote>
+      予定を登録する
+      <div>
+        <v-row justify="start">
+          <v-sheet height="600">
+            <v-date-picker
+              v-model="date"
+              color="#81D4FA"
+              header-color="#F8BBD0"
+              width="600"
+              @click:date="onClickOpen"
+            >
+              calender
+            </v-date-picker>
+            <confirm ref="confirm" />
+          </v-sheet>
+        </v-row>
+      </div>
     </v-flex>
   </v-layout>
 </template>
 
 <script>
+import confirm from '../components/dialog.vue'
 export default {
+  components: {
+    confirm
+  },
   data() {
     return {
-      picker: new Date().toISOString().substr(0, 10)
+      date: new Date().toISOString().substr(0, 10)
+    }
+  },
+  methods: {
+    async onClickOpen(date) {
+      await this.$refs.confirm.open(date, 'Add event', 'Add new event!', {
+        color: '#AED581'
+      })
     }
   }
 }

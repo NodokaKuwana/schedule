@@ -8,6 +8,12 @@
 
 <script>
 export default {
+  async asyncData({ app }) {
+    // エンドポイントを設定
+    const baseUrl = '/search'
+    const response = await app.$axios.$get(baseUrl)
+    return { lists: response }
+  },
   data() {
     return {
       headers: [
@@ -35,13 +41,6 @@ export default {
         }
       ]
     }
-  },
-  async asyncData({ app }) {
-    // エンドポイントを設定
-    const baseUrl = '/search'
-    const response = await app.$axios.$get(baseUrl)
-    console.log(response)
-    return { lists: response }
   }
 }
 </script>
