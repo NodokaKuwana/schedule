@@ -55,7 +55,7 @@ export default {
         },
         {
           icon: 'mdi-lead-pencil',
-          title: 'Register event',
+          title: 'Add event',
           to: '/regist'
         },
         {

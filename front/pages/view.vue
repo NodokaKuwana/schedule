@@ -2,9 +2,7 @@
   <section class="container">
     <div>
       <v-data-table :headers="headers" :items="lists" :items-per-page="10">
-        <v-icon @click="openDeleteDialog(props.item.id)">
-          delete
-        </v-icon>
+        <v-btn color="success">Success</v-btn>
       </v-data-table>
     </div>
   </section>
