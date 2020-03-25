@@ -20,46 +20,27 @@
             </v-col>
             <v-col cols="12" sm="3">
               <v-select
-                :items="[
-                  '0',
-                  '1',
-                  '2',
-                  '3',
-                  '4',
-                  '5',
-                  '6',
-                  '7',
-                  '8',
-                  '9',
-                  '10',
-                  '11',
-                  '12',
-                  '13',
-                  '14',
-                  '15',
-                  '16',
-                  '17',
-                  '18',
-                  '19',
-                  '20',
-                  '21',
-                  '22',
-                  '23',
-                  '24'
-                ]"
+                :items="hour_list"
+                v-model="hour"
                 label="hour"
                 required
               />
             </v-col>
             <v-col cols="12" sm="3">
               <v-select
-                :items="['00', '10', '20', '30', '40', '50']"
+                :items="minute_list"
+                v-model="minute"
                 label="minute"
                 required
               />
             </v-col>
             <v-col cols="12">
-              <v-text-field label="content" type="text" required />
+              <v-text-field
+                v-model="content"
+                label="content"
+                type="text"
+                required
+              />
             </v-col>
             <v-col cols="12">
               <v-text-field label="note" type="text" required />
@@ -88,8 +69,40 @@ export default {
     reject: null,
     message: null,
     title: null,
+    year: null,
     month: null,
     day: null,
+    hour_list: [
+      '00',
+      '01',
+      '02',
+      '03',
+      '04',
+      '05',
+      '06',
+      '07',
+      '08',
+      '09',
+      '10',
+      '11',
+      '12',
+      '13',
+      '14',
+      '15',
+      '16',
+      '17',
+      '18',
+      '19',
+      '20',
+      '21',
+      '22',
+      '23',
+      '24'
+    ],
+    minute_list: ['00', '10', '20', '30', '40', '50'],
+    hour: null,
+    minute: null,
+    content: null,
     options: {
       color: 'primary',
       width: 550
@@ -101,6 +114,7 @@ export default {
       this.title = title
       this.message = message
       this.options = Object.assign(this.options, options)
+      this.year = date.slice(0, 4)
       this.month = date.slice(5, 7)
       this.day = date.slice(8, 10)
       return new Promise((resolve, reject) => {
@@ -108,8 +122,17 @@ export default {
         this.reject = reject
       })
     },
-    agree() {
+    async agree() {
       this.resolve(true)
+      const baseUrl = '/register'
+      await this.$axios.$post(baseUrl, {
+        year: this.year,
+        month: this.month,
+        day: this.day,
+        hour: this.hour,
+        minute: this.minute,
+        content: this.content
+      })
       this.dialog = false
     },
     cancel() {
