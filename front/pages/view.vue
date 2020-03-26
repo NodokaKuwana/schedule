@@ -2,7 +2,9 @@
   <section class="container">
     <div>
       <v-data-table :headers="headers" :items="lists" :items-per-page="10">
-        <v-btn color="success">Success</v-btn>
+        <v-btn color="success">
+          Success
+        </v-btn>
       </v-data-table>
     </div>
   </section>
