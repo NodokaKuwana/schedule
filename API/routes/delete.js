@@ -14,7 +14,6 @@ router.delete('/', function (req, res, next) {
   pool.connect(function (err, client) {
     try {
       if (req.body.uuid != null) {
-        console.log(req)
         client.query(`DELETE FROM schedule where uuid='${req.body.uuid}'`, function (err, result) {
           res.send('Request is sended.');
         });
