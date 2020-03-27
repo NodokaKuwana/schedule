@@ -14,7 +14,7 @@
           >
             edit
           </v-icon>
-          <v-icon medium @click="deleteEvent(item.uuid)">
+          <v-icon medium @click="deleteEvent(item)">
             delete
           </v-icon>
         </template>
@@ -63,19 +63,17 @@ export default {
     }
   },
   methods: {
-    async deleteEvent(uuid1) {
-      const newLists = Object.entries(this.lists)
-      console.log(newLists)
-      console.log(Object.entries(newLists[0][1]))
-      const index = Object.entries(newLists[0][1]).findIndex(
-        (uuid1) => this.uuid === uuid1
+    async deleteEvent(item) {
+      const result = window.confirm(
+        'Are you sure you want to delete this event?'
       )
-      console.log(index)
-      confirm('Are you sure you want to delete this item?')
-      const baseUrl = '/delete'
-      const params = { uuid: uuid1 }
-      await this.$axios.$delete(baseUrl, { data: params })
-      this.desserts.splice(index, 1)
+      if (result) {
+        const index = this.lists.indexOf(item)
+        const baseUrl = '/delete'
+        const params = { uuid: item.uuid }
+        await this.$axios.$delete(baseUrl, { data: params })
+        this.lists.splice(index, 1)
+      }
     },
     async onClickOpen(date, time, content) {
       await this.$refs.confirm.modify(
