@@ -1,17 +1,36 @@
 <template>
   <section class="container">
     <div>
-      <v-data-table :headers="headers" :items="lists" :items-per-page="10">
-        <v-btn color="success">
-          Success
-        </v-btn>
+      <v-data-table
+        :headers="headers"
+        :items="lists"
+        :items-per-page="10"
+        class="elevation-1"
+      >
+        <template v-slot:item.action="{ item }">
+          <v-icon
+            medium
+            @click="onClickOpen(item.date, item.time, item.content)"
+          >
+            edit
+          </v-icon>
+          <v-icon medium @click="deleteEvent(item.uuid)">
+            delete
+          </v-icon>
+        </template>
       </v-data-table>
+      <confirm ref="confirm" />
     </div>
   </section>
 </template>
 
 <script>
+import 'material-design-icons-iconfont/dist/material-design-icons.css'
+import confirm from '../components/dialog.vue'
 export default {
+  components: {
+    confirm
+  },
   async asyncData({ app }) {
     // エンドポイントを設定
     const baseUrl = '/search'
@@ -20,30 +39,47 @@ export default {
   },
   data() {
     return {
+      message: 'OK',
       headers: [
         {
           text: '日にち',
           align: 'left',
-          sortable: true,
           value: 'date'
         },
         {
           text: '時間',
-          align: 'left',
-          sortable: true,
           value: 'time'
         },
         {
           text: 'やること',
-          align: 'left',
           value: 'content'
         },
         {
           text: 'Actions',
-          value: 'actions',
+          value: 'action',
           sortable: false
         }
       ]
+    }
+  },
+  methods: {
+    async deleteEvent(uuid) {
+      const baseUrl = '/delete'
+      const params = { uuid: this.uuid }
+      await this.$axios.$delete(baseUrl, { data: params })
+      console.log('clickRow', uuid)
+    },
+    async onClickOpen(date, time, content) {
+      await this.$refs.confirm.modify(
+        date,
+        time,
+        content,
+        'Add event',
+        'Add new event!',
+        {
+          color: '#AED581'
+        }
+      )
     }
   }
 }

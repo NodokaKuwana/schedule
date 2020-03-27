@@ -20,16 +20,16 @@
             </v-col>
             <v-col cols="12" sm="3">
               <v-select
-                :items="hour_list"
                 v-model="hour"
+                :items="hour_list"
                 label="hour"
                 required
               />
             </v-col>
             <v-col cols="12" sm="3">
               <v-select
-                :items="minute_list"
                 v-model="minute"
+                :items="minute_list"
                 label="minute"
                 required
               />
@@ -117,6 +117,23 @@ export default {
       this.year = date.slice(0, 4)
       this.month = date.slice(5, 7)
       this.day = date.slice(8, 10)
+      return new Promise((resolve, reject) => {
+        this.resolve = resolve
+        this.reject = reject
+      })
+    },
+    modify(date, time, content, title, message, options) {
+      console.log('this is modify')
+      this.dialog = true
+      this.title = title
+      this.message = message
+      this.options = Object.assign(this.options, options)
+      this.year = date.slice(0, 4)
+      this.month = date.slice(5, 7)
+      this.day = date.slice(8, 10)
+      this.hour = time.slice(0, 2)
+      this.minute = time.slice(3, 5)
+      this.content = content
       return new Promise((resolve, reject) => {
         this.resolve = resolve
         this.reject = reject

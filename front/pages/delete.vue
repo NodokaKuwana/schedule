@@ -70,14 +70,28 @@
           </v-dialog>
         </v-toolbar>
         <v-data-table :headers="headers" :items="desserts" class="elevation-1">
-          <!-- <template slot="items" slot-scope="props">
+          <template slot="items" slot-scope="props">
             <td>{{ props.item.name }}</td>
             <td class="text-xs-right">{{ props.item.calories }}</td>
             <td class="text-xs-right">{{ props.item.fat }}</td>
             <td class="text-xs-right">{{ props.item.carbs }}</td>
-            <td class="text-xs-right">{{ props.item.protein }}</td>
-            <td class="text-xs-right">{{ props.item.protein }}</td>
-          </template> -->
+            <td class="text-xs-right">
+              <v-icon medium="" color="success" @click="deleteItem(item)">
+                delete
+              </v-icon>
+            </td>
+            <td class="justify-center layout px-0">
+              <v-icon small @click="editItem(props.item)">
+                edit
+              </v-icon>
+              <v-icon small @click="deleteItem(props.item)">
+                delete
+              </v-icon>
+            </td>
+          </template>
+          <template slot="no-data">
+            <v-btn color="primary" @click="initialize">Reset</v-btn>
+          </template>
         </v-data-table>
       </div>
     </v-app>
