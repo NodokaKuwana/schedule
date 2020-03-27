@@ -1,13 +1,16 @@
 # schedule
 ## お勉強用
 
-### API
+### DBに登録したりするAPI
 node.js
 　Express
+postgresql
 - [x] POST:予定を登録　　
-- [x] GET：予定を取得(ID指定ありなし)　
+- [x] GET：予定を取得　
 - [ ] PUT:予定を修正(ID指定あり)　いったんおいとく
-- [x] DELETE：予定を削除　
+- [x] DELETE：予定を削除　(ID指定あり)
+
+
 
 ### フロント
 vue.js　
