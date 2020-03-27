@@ -2,8 +2,9 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 
+console.log("UPDATE")
 /*post*/
-router.post('/', function (req, res) {
+router.put('/', function (req, res) {
   //リクエストからデータを取り出す
   const date = req.body.year + '-' + req.body.month + '-' + req.body.day;
   const time = req.body.hour + req.body.minute;

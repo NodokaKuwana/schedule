@@ -123,22 +123,6 @@ export default {
         this.reject = reject
       })
     },
-    modify(date, time, content, title, message, options) {
-      this.dialog = true
-      this.title = title
-      this.message = message
-      this.options = Object.assign(this.options, options)
-      this.year = date.slice(0, 4)
-      this.month = date.slice(5, 7)
-      this.day = date.slice(8, 10)
-      this.hour = time.slice(0, 2)
-      this.minute = time.slice(3, 5)
-      this.content = content
-      return new Promise((resolve, reject) => {
-        this.resolve = resolve
-        this.reject = reject
-      })
-    },
     async agree() {
       this.resolve(true)
       const baseUrl = '/register'

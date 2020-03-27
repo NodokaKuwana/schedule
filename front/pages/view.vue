@@ -10,7 +10,7 @@
         <template v-slot:item.action="{ item }">
           <v-icon
             medium
-            @click="onClickOpen(item.date, item.time, item.content)"
+            @click="onClickOpen(item.uuid, item.date, item.time, item.content)"
           >
             edit
           </v-icon>
@@ -26,7 +26,7 @@
 
 <script>
 import 'material-design-icons-iconfont/dist/material-design-icons.css'
-import confirm from '../components/dialog.vue'
+import confirm from '../components/updateDialog.vue'
 export default {
   components: {
     confirm
@@ -75,8 +75,9 @@ export default {
         this.lists.splice(index, 1)
       }
     },
-    async onClickOpen(date, time, content) {
+    async onClickOpen(uuid, date, time, content) {
       await this.$refs.confirm.modify(
+        uuid,
         date,
         time,
         content,

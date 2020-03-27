@@ -69,6 +69,7 @@ export default {
     reject: null,
     message: null,
     title: null,
+    uuid: null,
     year: null,
     month: null,
     day: null,
@@ -109,25 +110,12 @@ export default {
     }
   }),
   methods: {
-    open(date, title, message, options) {
-      console.log('IN')
+    modify(uuid, date, time, content, title, message, options) {
       this.dialog = true
       this.title = title
       this.message = message
       this.options = Object.assign(this.options, options)
-      this.year = date.slice(0, 4)
-      this.month = date.slice(5, 7)
-      this.day = date.slice(8, 10)
-      return new Promise((resolve, reject) => {
-        this.resolve = resolve
-        this.reject = reject
-      })
-    },
-    modify(date, time, content, title, message, options) {
-      this.dialog = true
-      this.title = title
-      this.message = message
-      this.options = Object.assign(this.options, options)
+      this.uuid = uuid
       this.year = date.slice(0, 4)
       this.month = date.slice(5, 7)
       this.day = date.slice(8, 10)
@@ -141,8 +129,9 @@ export default {
     },
     async agree() {
       this.resolve(true)
-      const baseUrl = '/register'
-      await this.$axios.$post(baseUrl, {
+      const baseUrl = '/update'
+      await this.$axios.$put(baseUrl, {
+        uuid: this.uuid,
         year: this.year,
         month: this.month,
         day: this.day,

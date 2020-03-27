@@ -23,7 +23,7 @@
 </template>
 
 <script>
-import confirm from '../components/dialog.vue'
+import confirm from '../components/registDialog.vue'
 export default {
   components: {
     confirm
