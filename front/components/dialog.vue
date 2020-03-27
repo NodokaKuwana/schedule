@@ -123,7 +123,6 @@ export default {
       })
     },
     modify(date, time, content, title, message, options) {
-      console.log('this is modify')
       this.dialog = true
       this.title = title
       this.message = message

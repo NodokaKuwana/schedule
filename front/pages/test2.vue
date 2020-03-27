@@ -2,7 +2,9 @@
   <v-container>
     <v-data-table :headers="headers" :items="items" @click:row="clickRow">
       <template v-slot:item.action="{ item }">
-        <v-btn @click.stop="clickEdit(item.id)">編集</v-btn>
+        <v-btn @click.stop="clickEdit(item.id)">
+          編集
+        </v-btn>
       </template>
     </v-data-table>
   </v-container>
