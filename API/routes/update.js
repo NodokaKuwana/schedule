@@ -2,7 +2,6 @@ var express = require('express');
 var router = express.Router();
 var pg = require('pg');
 
-console.log("UPDATE")
 /*post*/
 router.put('/', function (req, res) {
   //リクエストからデータを取り出す
