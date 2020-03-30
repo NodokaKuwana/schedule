@@ -134,7 +134,10 @@ export default {
         minute: this.minute,
         content: this.content
       })
+      const baseUrl2 = '/search'
+      const response = await this.$axios.$get(baseUrl2)
       this.dialog = false
+      return { lists: response }
     },
     cancel() {
       this.resolve(false)

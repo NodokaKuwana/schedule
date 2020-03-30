@@ -10,7 +10,9 @@
         <template v-slot:item.action="{ item }">
           <v-icon
             medium
-            @click="onClickOpen(item.uuid, item.date, item.time, item.content)"
+            @click="
+              onClickOpen(item, item.uuid, item.date, item.time, item.content)
+            "
           >
             edit
           </v-icon>
@@ -75,7 +77,7 @@ export default {
         this.lists.splice(index, 1)
       }
     },
-    async onClickOpen(uuid, date, time, content) {
+    async onClickOpen(item, uuid, date, time, content) {
       await this.$refs.confirm.modify(
         uuid,
         date,
@@ -87,6 +89,7 @@ export default {
           color: '#AED581'
         }
       )
+      Object.assign(this.lists[this.lists.indexOf(item)], 'this.editedItem')
     }
   }
 }
