@@ -110,7 +110,6 @@ export default {
   }),
   methods: {
     open(date, title, message, options) {
-      console.log('IN')
       this.dialog = true
       this.title = title
       this.message = message
