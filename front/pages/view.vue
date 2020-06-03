@@ -83,8 +83,8 @@ export default {
         date,
         time,
         content,
-        'Add event',
-        'Add new event!',
+        'Update event',
+        'Update this event!',
         {
           color: '#AED581'
         }
