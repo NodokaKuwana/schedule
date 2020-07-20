@@ -21,7 +21,7 @@ router.put('/', function (req, res) {
   });
 
   //DBに登録
-  let regist = pool.connect(function (err, client) {
+  pool.connect(function (err, client) {
     try {
       client.query(`UPDATE schedule SET date='${date}',time='${time}',content='${content}' where uuid='${uuid}'`)
     } catch (err) {

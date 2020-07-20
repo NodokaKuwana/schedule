@@ -4,8 +4,10 @@ var pg = require('pg');
 
 /*post*/
 router.post('/', function (req, res) {
+
   //リクエストからデータを取り出す
   date = req.body.year + '-' + req.body.month + '-' + req.body.day;
+  console.log(date)
   time = req.body.hour + req.body.minute;
   content = req.body.content;
   id = date.slice(2, 10).replace(/-/g, '') + time.replace(/:/g, '');
@@ -21,9 +23,9 @@ router.post('/', function (req, res) {
   });
 
   //DBに登録
-  let regist = pool.connect(function (err, client) {
+  pool.connect(function (err, client) {
     try {
-      console.log(id)
+      console.log(req)
       client.query(`INSERT INTO schedule values (gen_random_uuid(),'${id}','${date}','${time}','${content}')`)
     } catch (err) {
       console.log(err);
