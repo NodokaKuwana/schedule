@@ -20,10 +20,10 @@ app.use(express.static(path.join(__dirname, 'public')));
 
 //ルーティングの設定
 const indexRouter = require('./routes/index');
-const searchRouter = require('./routes/search');
-const registarRouter = require('./routes/register');
-const deleteRouter = require('./routes/delete');
-const updateRouter = require('./routes/update');
+const searchRouter = require('./routes/get-sumple');
+const registarRouter = require('./routes/post-sumple');
+const deleteRouter = require('./routes/delete-sumple');
+const updateRouter = require('./routes/put-sumple');
 
 // const updateRouter = require('./routes/update');
 app.use('/', indexRouter);

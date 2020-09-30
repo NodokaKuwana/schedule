@@ -23,8 +23,8 @@
               </v-col>
               <v-col cols="12" sm="3">
                 <v-text-field
-                  :rules="contentRules"
                   v-model="day"
+                  :rules="contentRules"
                   label="day"
                   required
                 />

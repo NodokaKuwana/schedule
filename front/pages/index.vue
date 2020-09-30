@@ -11,7 +11,7 @@
         </v-card-title>
         <v-card-text>
           <p>
-            練習用につくったスケジュール管理アプリ
+            練習
           </p>
 
           <hr class="my-3" />
